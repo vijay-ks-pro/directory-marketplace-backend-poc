@@ -74,9 +74,10 @@ async function bootstrap() {
             return res.status(401).send({ success: false, message: "Unauthorised request" });
         }
 
-        const isLocalhost = origin.includes(':') || origin.includes('localhost');
+        const isLocalhost = origin.includes('localhost');
         const organisation = isLocalhost ? origin.split(':')[2] : origin.replaceAll('.', '_');
-        const db = `direcotory_db_${isPostman ? '3000' : organisation}`
+        console.log('origin: ', req.headers.origin);
+        const db = `directory_db_${isPostman ? '3000' : organisation}`
         req.headers[TENANT_IDENTIFIER.toLowerCase()] = db;
         next();
     })
