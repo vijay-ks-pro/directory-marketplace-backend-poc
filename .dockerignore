@@ -1,0 +1,11 @@
+apps/
+libs/
+.eslintrc.js
+.gitignore
+.prettierrc
+.env
+.env.example
+Dockerfile
+nest-cli.json
+node_modules
+README.md
