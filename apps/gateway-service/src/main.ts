@@ -75,7 +75,7 @@ async function bootstrap() {
         }
 
         const isLocalhost = origin.includes('localhost');
-        const organisation = isLocalhost ? origin.split(':')[2] : origin.replaceAll('.', '_');
+        const organisation = isLocalhost ? origin.split(':')[2] : origin.replaceAll('.', '_').split('://')[1].substring(0, 10);
         console.log('origin: ', req.headers.origin);
         const db = `directory_db_${isPostman ? '3000' : organisation}`
         req.headers[TENANT_IDENTIFIER.toLowerCase()] = db;
